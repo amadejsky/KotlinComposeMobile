@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -24,14 +25,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
            MyColumn()
+           //MyRow()
         }
     }
     @Composable
     fun MyColumn(){
         Column(
-            modifier = Modifier.background(Color.LightGray).fillMaxSize(),
+            modifier = Modifier.background(Color.Magenta).fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom
+            verticalArrangement = Arrangement.Center
         ){
             Text(text = "Hello Android!")
             Text(text = "Is it me you looking for")
@@ -40,10 +42,16 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun MyElement(){
-        Text(text = "Hello Android!")
-        Text(text = "Is it me you looking for")
-        Text(text = "Test!")
+    fun MyRow(){
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ){
+            Text(text = "Hello Android!")
+            Text(text = "Is it me you looking for")
+            Text(text = "Test!")
+        }
     }
 }
 
