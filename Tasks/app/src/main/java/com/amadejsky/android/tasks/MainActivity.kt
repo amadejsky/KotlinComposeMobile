@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -25,8 +26,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.amadejsky.android.tasks.ui.theme.TasksTheme
 
 class MainActivity : ComponentActivity() {
@@ -34,9 +39,54 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyModifier()
+            //MyModifier()
            //MyColumn()
            //MyRow()
+            //MyModifierExercise()
+            MyText()
+        }
+    }
+
+    @Composable
+    fun MyText(){
+        Text(
+            text = "Style of a mighty Text!",
+            fontSize = 20.sp,
+            color = Color.Magenta,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textDecoration = TextDecoration.Underline,
+            modifier = Modifier
+                .padding(top = 30.dp)
+
+        )
+    }
+
+    @Composable
+    fun MyModifierExercise(){
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.DarkGray),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ){
+            Text(
+                text = "Top",
+                modifier = Modifier
+                    .padding(10.dp)
+                    .background(Color.LightGray, RectangleShape)
+
+            )
+            Text(
+                text = "Bottom",
+                modifier = Modifier
+                    .padding(10.dp)
+                    .background(Color.LightGray, CircleShape)
+                    .border(2.dp, Color.White, shape = CircleShape)
+
+
+            )
         }
     }
 
