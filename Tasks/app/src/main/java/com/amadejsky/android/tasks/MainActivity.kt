@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -27,6 +29,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,7 +46,42 @@ class MainActivity : ComponentActivity() {
            //MyColumn()
            //MyRow()
             //MyModifierExercise()
-            MyText()
+            //MyText()
+            MyTextAlignment()
+        }
+    }
+    @Composable
+    fun MyTextAlignment(){
+        Column(
+            modifier = Modifier.fillMaxSize()
+                .padding(top = 50.dp),
+
+//            horizontalAlignment = Alignment.End
+
+        ){
+            Text(
+                text = "Text1",
+                modifier = Modifier
+                    .background(Color.Green)
+                    .align(Alignment.Start)
+                    .fillMaxWidth(),
+                textAlign = TextAlign.End
+            )
+            Text(
+                text = "Text2",
+                modifier = Modifier
+                    .background(Color.Yellow)
+                    .align(Alignment.CenterHorizontally)
+            )
+            Text(
+                text = "Text3",
+                modifier = Modifier
+                    .background(Color.Red)
+                    .align(Alignment.End)
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .wrapContentSize()
+            )
         }
     }
 
