@@ -19,6 +19,12 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.outlined.Done
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +53,32 @@ class MainActivity : ComponentActivity() {
            //MyRow()
             //MyModifierExercise()
             //MyText()
-            MyTextAlignment()
+           //MyTextAlignment()
+            MyIcon()
+        }
+    }
+    @Composable
+    fun MyIcon(){
+        Column(){
+            Icon(imageVector = Icons.Default.Email, contentDescription = "email Icon",
+                    modifier = Modifier.padding(50.dp)
+            )
+            Icon(
+                imageVector = Icons.Outlined.Email, contentDescription = "outlined email"
+            )
+            Icon(
+                imageVector = Icons.Outlined.Done, contentDescription = "", tint = Color.Green
+            )
+            Icon(
+                imageVector = Icons.Default.Done,
+                contentDescription = "done icon",
+                tint = Color.White,
+                modifier = Modifier
+                    .background(Color.Green, CircleShape)
+                    .border(1.dp, Color.Black, CircleShape)
+                    .padding(3.dp)
+            )
+
         }
     }
     @Composable
