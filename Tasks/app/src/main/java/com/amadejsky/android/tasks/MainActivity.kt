@@ -4,11 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,11 +23,18 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,6 +45,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -54,7 +65,101 @@ class MainActivity : ComponentActivity() {
             //MyModifierExercise()
             //MyText()
            //MyTextAlignment()
-            MyIcon()
+            //MyIcon()
+            //MySpacer()
+            //MyProgressExercise()
+            MyButton()
+        }
+    }
+    @Composable
+    fun MyButton(){
+        Column(){
+            Button(onClick = {}) {
+                Text(text="Button")
+            }
+            Button(
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.LightGray,
+                    contentColor = Color.DarkGray
+                ),
+                shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(2.dp, Color.Red),
+                contentPadding = PaddingValues(30.dp),
+                modifier = Modifier.padding(10.dp),
+
+                //enabled = false
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Icon(imageVector = Icons.Default.Add, contentDescription = null)
+                    Text(text = "Add")
+                }
+            }
+        }
+    }
+    @Composable
+    fun MyProgressExercise(){
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween
+        ){
+            Text(text = "Hello User!",
+                color = Color.White,
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Thin,
+                textAlign = TextAlign.End,
+
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Magenta)
+            )
+            Divider()
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+            Divider()
+            Text(text = "Cool layout",
+                color = Color.Blue,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 20.dp))
+
+        }
+    }
+    @Composable
+    fun MyProgress(){
+        Column(modifier = Modifier.padding(10.dp)){
+            CircularProgressIndicator(color = Color.Magenta)
+            Spacer(modifier = Modifier.height(40.dp))
+            CircularProgressIndicator(progress = 0.8f)
+            LinearProgressIndicator(color = Color.Red,
+                modifier = Modifier.fillMaxWidth(),
+                trackColor = Color.Magenta)
+        }
+    }
+    @Composable
+    fun MyDivider(){
+        Column(){
+            Text(text = "Im UP")
+            Divider()
+            Text(text = "IM DOWN")
+        }
+    }
+
+    @Composable
+    fun MySpacer(){
+        Column(){
+            Text(text = "Im UP!",
+//                modifier = Modifier.padding(bottom = 20.dp)
+            )
+            Spacer(
+                modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth()
+                    .background(Color.Green)
+            )
+            Text(text = "Im Down")
         }
     }
     @Composable
