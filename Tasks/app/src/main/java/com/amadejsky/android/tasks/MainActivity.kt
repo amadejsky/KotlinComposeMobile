@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
@@ -36,6 +37,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -68,7 +70,8 @@ class MainActivity : ComponentActivity() {
             //MyIcon()
             //MySpacer()
             //MyProgressExercise()
-            MyButton()
+            //MyButton()
+            MySurface()
         }
     }
     @Composable
@@ -99,6 +102,31 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    @Composable
+    fun MySurface(){
+        Surface(
+            modifier = Modifier
+                .size(200.dp)
+                .fillMaxSize(),
+            color = Color.Red,
+            contentColor = Color.Blue,
+            border = BorderStroke(2.dp,Color.Green)
+        ){
+            Column(){
+                Text(
+                    text = "Surface",
+                    modifier = Modifier.padding(10.dp)
+                )
+                Text(
+                    text = "Surface",
+                    modifier = Modifier.padding(10.dp)
+                )
+            }
+
+        }
+    }
+
     @Composable
     fun MyProgressExercise(){
         Column(
