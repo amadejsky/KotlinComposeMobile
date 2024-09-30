@@ -8,6 +8,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -32,6 +33,8 @@ import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -71,9 +74,62 @@ class MainActivity : ComponentActivity() {
             //MySpacer()
             //MyProgressExercise()
             //MyButton()
-            MySurface()
+            //MySurface()
+            //MyCard()
+            MyBox()
         }
     }
+    @Composable
+    fun MyBox(){
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .background(Color.LightGray),
+            contentAlignment = Alignment.TopCenter
+        ) {
+            Text(text = "Box1", modifier = Modifier.align(Alignment.BottomEnd))
+            Text(text = "Box2", modifier = Modifier.align(Alignment.BottomCenter))
+            Text(text = "Box3", modifier = Modifier.align(Alignment.BottomStart))
+            Box(
+                modifier = Modifier
+                    .size(150.dp)
+                    .border(1.dp, Color.Black, RoundedCornerShape(8.dp))
+                    .align(Alignment.Center)
+            ){
+                Spacer(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(Color.Magenta, RoundedCornerShape(8.dp))
+                        .align(Alignment.Center)
+                )
+                Spacer(
+                    modifier = Modifier
+                        .size(50.dp)
+                        .background(Color.Magenta, RoundedCornerShape(8.dp))
+                        .align(Alignment.TopStart)
+                )
+                Spacer(
+                    modifier = Modifier
+                        .size(50.dp)
+                        .background(Color.Magenta, RoundedCornerShape(8.dp))
+                        .align(Alignment.BottomEnd)
+                )
+            }
+        }
+    }
+    @Composable
+    fun MyCard(){
+        Card(
+            modifier = Modifier.padding(40.dp),
+            elevation = CardDefaults.elevatedCardElevation(defaultElevation = 8.dp),
+            colors = CardDefaults.cardColors(Color.Blue)
+        ){
+            Text(
+                text = "Card",
+                modifier = Modifier.padding(10.dp)
+            )
+        }
+    }
+
     @Composable
     fun MyButton(){
         Column(){
