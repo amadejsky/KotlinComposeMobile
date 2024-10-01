@@ -10,6 +10,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,6 +32,7 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -76,8 +79,140 @@ class MainActivity : ComponentActivity() {
             //MyButton()
             //MySurface()
             //MyCard()
-            MyBox()
+            //MyBox()
+            //MyLayoutWeight()
+            MyExercise2()
+
         }
+    }
+    @Composable
+    fun MyExercise2(){
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.BottomCenter
+        ){
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.DarkGray)
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ){
+                MyUdemyInfoView()
+                MyUdemyPriceView()
+            }
+        }
+
+    }
+    @Composable
+    fun MyUdemyInfoView(){
+        Column(modifier = Modifier
+            .background(Color.DarkGray)
+        ){
+            Text(
+                text = "Kotlin Course + comparision Java vs Kotlin and more",
+                color = Color.White,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Text(
+                    text = "4,7",
+                    color = Color.Yellow
+                )
+                Spacer(modifier = Modifier.width(2.dp))
+                Icon(
+                    imageVector = Icons.Outlined.Star,
+                    contentDescription = "Star icon",
+                    tint = Color.Yellow
+                )
+                Spacer(modifier = Modifier.width(2.dp))
+                Text(
+                    text = "Ratings: 560",
+                    color = Color.Magenta,
+                    textDecoration = TextDecoration.Underline
+
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "1056 participants",
+                    color = Color.White
+                )
+            }
+        }
+
+    }
+    @Composable
+    fun MyUdemyPriceView(){
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.DarkGray)
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.End
+        ){
+            Column(
+                horizontalAlignment = Alignment.End
+            ){
+                Text(
+                    text = "49.99",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontSize = 20.sp
+
+                )
+                Text(
+                    text = "299.99",
+                    color = Color.LightGray,
+                    textDecoration = TextDecoration.LineThrough,
+                    fontSize = 14.sp
+                    )
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            Button(
+                onClick = {} ,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                    contentColor = Color.Black
+                ),
+                shape = RectangleShape,
+                contentPadding = PaddingValues(8.dp)
+            ) {
+                Text(text = "Buy now",
+                    fontWeight = FontWeight.ExtraBold
+                )
+            }
+        }
+
+    }
+    @Composable
+    fun MyLayoutWeight(){
+        Row(
+        ){
+            Text(
+                text = "Text1",
+                modifier = Modifier
+                    .background(Color.Green)
+                    .weight(1f)
+            )
+            Text(
+                text = "Text2",
+                modifier = Modifier
+                    .background(Color.Yellow)
+                    .weight(1f)
+            )
+            Text(
+                text = "Text3",
+                modifier = Modifier
+                    .background(Color.Red)
+                    .weight(1f)
+            )
+        }
+
     }
     @Composable
     fun MyBox(){
